@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="investmentdbModelStoreContainer" CdmEntityContainer="investmentdbEntities">
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="investmentdbModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="risk_capability" ColumnName="risk_capability" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="profession" ColumnName="profession" />
+          <ScalarProperty Name="investment_capability" ColumnName="investment_capability" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ideas">
+      <EntityTypeMapping TypeName="investmentdbModel.idea">
+        <MappingFragment StoreEntitySet="idea">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="abstract" ColumnName="abstract" />
+          <ScalarProperty Name="publish_date" ColumnName="publish_date" />
+          <ScalarProperty Name="expiry_date" ColumnName="expiry_date" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="risk_rating" ColumnName="risk_rating" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="sector" ColumnName="sector" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="managers">
+      <EntityTypeMapping TypeName="investmentdbModel.manager">
+        <MappingFragment StoreEntitySet="manager">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="investmentdbModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="sector" ColumnName="sector" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="min_investment" ColumnName="min_investment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suggestions">
+      <EntityTypeMapping TypeName="investmentdbModel.suggestion">
+        <MappingFragment StoreEntitySet="suggestions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="idea_id" ColumnName="idea_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suggestion_products">
+      <EntityTypeMapping TypeName="investmentdbModel.suggestion_products">
+        <MappingFragment StoreEntitySet="suggestion_products">
+          <ScalarProperty Name="suggestion_id" ColumnName="suggestion_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

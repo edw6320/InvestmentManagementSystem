@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="investmentdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="contact" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="region" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="risk_capability" Type="Int32" />
+    <Property Name="currency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="profession" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="investment_capability" Type="Int32" />
+  </EntityType>
+  <EntityType Name="idea">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="abstract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="publish_date" Type="DateTime" Precision="0" />
+    <Property Name="expiry_date" Type="DateTime" Precision="0" />
+    <Property Name="author" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="risk_rating" Type="Int32" />
+    <Property Name="currency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="sector" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="region" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="manager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="sector" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="region" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="min_investment" Type="Int32" />
+  </EntityType>
+  <EntityType Name="suggestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="manager_id" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="client_id" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="idea_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="suggestion_products">
+    <Key>
+      <PropertyRef Name="suggestion_id" />
+    </Key>
+    <Property Name="suggestion_id" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="product_id" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="investmentdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="clients" EntityType="Self.client" />
+    <EntitySet Name="ideas" EntityType="Self.idea" />
+    <EntitySet Name="managers" EntityType="Self.manager" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="suggestions" EntityType="Self.suggestion" />
+    <EntitySet Name="suggestion_products" EntityType="Self.suggestion_products" />
+  </EntityContainer>
+</Schema>

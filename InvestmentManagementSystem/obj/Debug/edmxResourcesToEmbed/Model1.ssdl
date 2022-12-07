@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="investmentdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="50" />
+    <Property Name="contact" Type="nchar" MaxLength="10" />
+    <Property Name="address" Type="nchar" MaxLength="50" />
+    <Property Name="region" Type="nchar" MaxLength="50" />
+    <Property Name="risk_capability" Type="int" />
+    <Property Name="currency" Type="nchar" MaxLength="10" />
+    <Property Name="profession" Type="nchar" MaxLength="10" />
+    <Property Name="investment_capability" Type="int" />
+  </EntityType>
+  <EntityType Name="idea">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nchar" MaxLength="50" />
+    <Property Name="abstract" Type="ntext" />
+    <Property Name="publish_date" Type="date" />
+    <Property Name="expiry_date" Type="date" />
+    <Property Name="author" Type="nchar" MaxLength="50" />
+    <Property Name="content" Type="ntext" />
+    <Property Name="risk_rating" Type="int" />
+    <Property Name="currency" Type="nchar" MaxLength="10" />
+    <Property Name="sector" Type="nchar" MaxLength="50" />
+    <Property Name="region" Type="nchar" MaxLength="50" />
+    <Property Name="type" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="manager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nchar" MaxLength="20" />
+    <Property Name="sector" Type="nchar" MaxLength="50" />
+    <Property Name="region" Type="nchar" MaxLength="50" />
+    <Property Name="type" Type="nchar" MaxLength="50" />
+    <Property Name="min_investment" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAPCH\SOURCE\REPOS\INVESTMENTMANAGEMENTSYSTEM\INVESTMENTMANAGEMENTSYSTEM\INVESTMENTDB.MDF.dbo.suggestion_products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="suggestion_products">
+    <Key>
+      <PropertyRef Name="suggestion_id" />
+    </Key>
+    <Property Name="suggestion_id" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+  </EntityType>
+  <EntityType Name="suggestions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="manager_id" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="client_id" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="idea_id" Type="int" />
+  </EntityType>
+  <EntityContainer Name="investmentdbModelStoreContainer">
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="idea" EntityType="Self.idea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="manager" EntityType="Self.manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suggestions" EntityType="Self.suggestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suggestion_products" EntityType="Self.suggestion_products" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [suggestion_products].[suggestion_id] AS [suggestion_id], 
+    [suggestion_products].[product_id] AS [product_id]
+    FROM [dbo].[suggestion_products] AS [suggestion_products]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
